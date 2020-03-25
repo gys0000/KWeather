@@ -1,10 +1,9 @@
-package com.gystry.kweather.net
+package com.gystry.kweather.data.net
 
 import android.util.Log
-import com.gystry.kweather.net.interceptor.LoggingInterceptor
+import com.gystry.kweather.data.net.interceptor.LoggingInterceptor
 import okhttp3.*
 import java.io.IOException
-import java.util.*
 import kotlin.collections.HashMap
 
 class OkHttpManager {
@@ -37,7 +36,7 @@ class OkHttpManager {
             }
 
             override fun onResponse(call: Call, response: Response) {
-                Log.e("OkHttpManager", "onResponse${response.body?.string()}")
+//                Log.e("OkHttpManager", "onResponse${response.body?.string()}")
             }
 
         })
@@ -46,11 +45,11 @@ class OkHttpManager {
     fun requestToExecuteGet() {
         Thread {
             val response = getNewCall().execute()
-            Log.e(
-                "OkHttpManager-",
-                "requestToExecute-onResponse${response.message}--" +
-                        "--${response.body?.string()}"
-            )
+//            Log.e(
+//                "OkHttpManager-",
+//                "requestToExecute-onResponse${response.message}--" +
+//                        "--${response.body?.string()}"
+//            )
         }.start()
     }
 
@@ -61,7 +60,7 @@ class OkHttpManager {
             }
 
             override fun onResponse(call: Call, response: Response) {
-                Log.e("OkHttpManager", "requestToPost-onResponse${response.body?.string()}")
+//                Log.e("OkHttpManager", "requestToPost-onResponse${response.body?.string()}")
             }
         })
     }
