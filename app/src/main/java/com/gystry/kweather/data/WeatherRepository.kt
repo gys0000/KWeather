@@ -31,7 +31,7 @@ class WeatherRepository private constructor(
         if (url == null) url = requestBingPic()
         return url
     }
-
+    suspend fun refreshBingPic() = requestBingPic()
     fun isWeatherCached() = weatherDao.getCacheWeatherInfo() != null
 
     fun getCacheWeather() = weatherDao.getCacheWeatherInfo()!!

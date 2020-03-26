@@ -10,6 +10,8 @@ import androidx.lifecycle.ViewModelProviders
 import com.gystry.kweather.R
 import com.gystry.kweather.data.net.OkHttpManager
 import com.gystry.kweather.data.net.WeatherNetWork
+import com.gystry.kweather.ui.area.ChooseFragment
+import com.gystry.kweather.ui.weather.WeatherActivity
 import com.gystry.kweather.util.InjectorUtil
 import kotlinx.coroutines.*
 import java.net.HttpURLConnection
@@ -24,9 +26,12 @@ class MainActivity : AppCompatActivity() {
         var viewModel = ViewModelProviders.of(this, InjectorUtil.getWeatherModelFactory())
             .get(MainViewModel::class.java)
         if (viewModel.isWeatherCached()) {
-
+            val intent = Intent(this, WeatherActivity::class.java)
+            startActivity(intent)
+            finish()
         } else {
-//            supportFragmentManager.beginTransaction().replace(R.id.container,Choos)
+            supportFragmentManager.beginTransaction().replace(R.id.container, ChooseFragment())
+                .commit()
         }
 
 
