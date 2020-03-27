@@ -1,6 +1,7 @@
 package com.gystry.kweather.util
 
 import android.annotation.SuppressLint
+import android.util.Log
 import android.widget.Toast
 import com.gystry.kweather.MyApplication
 
@@ -15,4 +16,8 @@ import com.gystry.kweather.MyApplication
 @SuppressLint("ShowToast")
 fun toast(msg: String) {
     Toast.makeText(MyApplication.context, msg, Toast.LENGTH_LONG)
+}
+
+fun Any.log(msg: String,tag:String=this::class.java.name) {
+    Log.e(tag, msg)
 }

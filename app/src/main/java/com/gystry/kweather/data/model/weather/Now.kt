@@ -1,4 +1,4 @@
-package com.coolweather.coolweatherjetpack.data.model.weather
+package com.gystry.kweather.data.model.weather
 
 import com.google.gson.annotations.SerializedName
 

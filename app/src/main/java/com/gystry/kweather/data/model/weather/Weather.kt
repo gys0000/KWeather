@@ -1,8 +1,5 @@
 package com.gystry.kweather.data.model.weather
 
-import com.coolweather.coolweatherjetpack.data.model.weather.Forecast
-import com.coolweather.coolweatherjetpack.data.model.weather.Now
-import com.coolweather.coolweatherjetpack.data.model.weather.Suggestion
 import com.google.gson.annotations.SerializedName
 
 class Weather {

@@ -1,7 +1,7 @@
 package com.gystry.kweather.data.db
 
-import com.coolweather.coolweatherjetpack.data.model.place.City
-import com.coolweather.coolweatherjetpack.data.model.place.County
+import com.gystry.kweather.data.model.place.City
+import com.gystry.kweather.data.model.place.County
 import com.gystry.kweather.data.model.place.Province
 import org.litepal.LitePal
 

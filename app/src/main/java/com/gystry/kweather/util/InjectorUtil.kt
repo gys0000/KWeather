@@ -7,6 +7,7 @@ import com.gystry.kweather.data.db.WeatherDao
 import com.gystry.kweather.data.net.WeatherNetWork
 import com.gystry.kweather.ui.MainModelFactory
 import com.gystry.kweather.ui.area.ChooseAreaModelFactory
+import com.gystry.kweather.ui.weather.WeatherModelFactory
 
 /**
  * @author gystry
@@ -24,7 +25,10 @@ object InjectorUtil {
         WeatherNetWork.getInstance()
     )
 
-    fun getWeatherModelFactory() = MainModelFactory(getWeatherRepository())
+    fun getMainModelFactory() = MainModelFactory(getWeatherRepository())
 
     fun getChooseAreaModelFactory() = ChooseAreaModelFactory(getPlaceRepository())
+
+    fun getWeatherModelFactory() = WeatherModelFactory(getWeatherRepository())
+
 }

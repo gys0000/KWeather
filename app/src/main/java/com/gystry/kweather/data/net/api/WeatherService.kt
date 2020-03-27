@@ -1,6 +1,6 @@
 package com.gystry.kweather.data.net.api
 
-import com.coolweather.coolweatherjetpack.data.model.weather.HeWeather
+import com.gystry.kweather.data.model.weather.HeWeather
 import retrofit2.Call
 import retrofit2.http.GET
 import retrofit2.http.Query

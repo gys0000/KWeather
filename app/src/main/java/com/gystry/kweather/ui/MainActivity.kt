@@ -13,6 +13,7 @@ import com.gystry.kweather.data.net.WeatherNetWork
 import com.gystry.kweather.ui.area.ChooseFragment
 import com.gystry.kweather.ui.weather.WeatherActivity
 import com.gystry.kweather.util.InjectorUtil
+import com.gystry.kweather.util.log
 import kotlinx.coroutines.*
 import java.net.HttpURLConnection
 import java.net.URL
@@ -23,7 +24,7 @@ class MainActivity : AppCompatActivity() {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_main)
 
-        var viewModel = ViewModelProviders.of(this, InjectorUtil.getWeatherModelFactory())
+        var viewModel = ViewModelProviders.of(this, InjectorUtil.getMainModelFactory())
             .get(MainViewModel::class.java)
         if (viewModel.isWeatherCached()) {
             val intent = Intent(this, WeatherActivity::class.java)

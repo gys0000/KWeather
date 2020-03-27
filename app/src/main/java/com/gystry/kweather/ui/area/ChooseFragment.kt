@@ -1,6 +1,7 @@
 package com.gystry.kweather.ui.area
 
 import android.app.ProgressDialog
+import android.content.Intent
 import android.os.Bundle
 import android.view.LayoutInflater
 import android.view.View
@@ -13,7 +14,10 @@ import androidx.lifecycle.ViewModelProviders
 import com.gystry.kweather.R
 import com.gystry.kweather.databinding.ChooseAreaBindingImpl
 import com.gystry.kweather.ui.MainActivity
+import com.gystry.kweather.ui.weather.WeatherActivity
 import com.gystry.kweather.util.InjectorUtil
+import com.gystry.kweather.util.log
+import kotlinx.android.synthetic.main.activity_weather.*
 import kotlinx.android.synthetic.main.choose_area.*
 
 /**
@@ -72,6 +76,7 @@ class ChooseFragment : Fragment() {
             }
         })
         viewModel.dataChanged.observe(this, Observer {
+            log("dataChange-- $it")
             adapter.notifyDataSetChanged()
             listView.setSelection(0)
             closeProgressDialog()
@@ -84,9 +89,15 @@ class ChooseFragment : Fragment() {
         viewModel.areaSelected.observe(this, Observer {
             if (it && viewModel.selectedCounty != null) {
                 if (activity is MainActivity) {
-
-                } else if (activity is MainActivity) {
-
+                    val intent = Intent(activity, WeatherActivity::class.java)
+                    intent.putExtra("weather_id", viewModel.selectedCounty!!.weatherId)
+                    startActivity(intent)
+                    activity?.finish()
+                } else if (activity is WeatherActivity) {
+                    val weatherActivity = activity as WeatherActivity
+                    weatherActivity.drawerLayout.closeDrawers()
+                    weatherActivity.viewModel.weatherId = viewModel.selectedCounty!!.weatherId
+                    weatherActivity.viewModel.refreshWeather()
                 }
                 viewModel.areaSelected.value = false
             }

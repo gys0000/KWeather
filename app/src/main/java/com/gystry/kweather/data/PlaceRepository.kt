@@ -2,6 +2,7 @@ package com.gystry.kweather.data
 
 import com.gystry.kweather.data.db.PlaceDao
 import com.gystry.kweather.data.net.WeatherNetWork
+import com.gystry.kweather.util.log
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.withContext
 
@@ -18,7 +19,9 @@ class PlaceRepository private constructor(
 ) {
 
     suspend fun getProvinceList() = withContext(Dispatchers.IO) {
+        log("22222222-----${network.fetchProvinceList().toString()}")
         var provinceList = placeDao.getProvinceList()
+        log("44444444-----${network.fetchProvinceList().toString()}")
         if (provinceList.isEmpty()) {
             provinceList = network.fetchProvinceList()
             placeDao.saveProvinceList(provinceList)

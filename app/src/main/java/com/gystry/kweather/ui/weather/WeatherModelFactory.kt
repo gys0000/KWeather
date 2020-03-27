@@ -11,7 +11,9 @@ import com.gystry.kweather.data.WeatherRepository
  * @date 2020/3/26.
  * @description:
  */
-class WeatherModelFactory(private val repository: WeatherRepository):ViewModelProvider.NewInstanceFactory() {
+class WeatherModelFactory(private val repository: WeatherRepository) :
+    ViewModelProvider.NewInstanceFactory() {
+    @Suppress("UNCHECKED_CAST")
     override fun <T : ViewModel?> create(modelClass: Class<T>): T {
         return WeatherViewModel(repository) as T
     }

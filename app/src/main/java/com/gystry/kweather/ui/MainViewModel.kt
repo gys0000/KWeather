@@ -2,6 +2,7 @@ package com.gystry.kweather.ui
 
 import androidx.lifecycle.ViewModel
 import com.gystry.kweather.data.WeatherRepository
+import com.gystry.kweather.util.log
 
 /**
  * @author gystry
@@ -10,6 +11,6 @@ import com.gystry.kweather.data.WeatherRepository
  * @date 2020/3/24.
  * @description:
  */
-class MainViewModel(private val repository: WeatherRepository):ViewModel() {
-    fun isWeatherCached()=repository.isWeatherCached()
+class MainViewModel(private val repository: WeatherRepository) : ViewModel() {
+    fun isWeatherCached() = repository.isWeatherCached()
 }

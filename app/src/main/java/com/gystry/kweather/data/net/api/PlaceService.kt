@@ -1,7 +1,7 @@
 package com.gystry.kweather.data.net.api
 
-import com.coolweather.coolweatherjetpack.data.model.place.City
-import com.coolweather.coolweatherjetpack.data.model.place.County
+import com.gystry.kweather.data.model.place.City
+import com.gystry.kweather.data.model.place.County
 import com.gystry.kweather.data.model.place.Province
 import retrofit2.Call
 import retrofit2.http.GET

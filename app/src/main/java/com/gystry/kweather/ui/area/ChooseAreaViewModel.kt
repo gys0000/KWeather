@@ -5,13 +5,14 @@ import android.widget.AdapterView
 import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
-import com.coolweather.coolweatherjetpack.data.model.place.City
-import com.coolweather.coolweatherjetpack.data.model.place.County
+import com.gystry.kweather.data.model.place.City
+import com.gystry.kweather.data.model.place.County
 import com.gystry.kweather.data.PlaceRepository
 import com.gystry.kweather.data.model.place.Province
 import com.gystry.kweather.ui.area.ChooseFragment.Companion.LEVEL_CITY
 import com.gystry.kweather.ui.area.ChooseFragment.Companion.LEVEL_COUNTY
 import com.gystry.kweather.ui.area.ChooseFragment.Companion.LEVEL_PROVINCE
+import com.gystry.kweather.util.log
 import com.gystry.kweather.util.toast
 import kotlinx.coroutines.launch
 import java.util.ArrayList
@@ -49,9 +50,12 @@ class ChooseAreaViewModel(private val repository: PlaceRepository) : ViewModel()
     fun getProvinces() {
         currentLevel.value = LEVEL_PROVINCE
         launch {
+            log("getProvinces")
             provinces = repository.getProvinceList()
             //MutableList 的map可以处理并获取新的list
-            dataList.addAll(provinces.map { it.provinceName })
+            dataList.addAll(provinces.map {
+                it.provinceName
+            })
         }
     }
 
@@ -100,6 +104,7 @@ class ChooseAreaViewModel(private val repository: PlaceRepository) : ViewModel()
         try {
             isLoading.value = true
             dataList.clear()
+            log("viewModelScope.launch--${dataChanged}--${dataChanged.value}")
             block()
             dataChanged.value = dataChanged.value?.plus(1)
             isLoading.value = false

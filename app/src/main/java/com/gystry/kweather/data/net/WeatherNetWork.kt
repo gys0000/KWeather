@@ -2,6 +2,7 @@ package com.gystry.kweather.data.net
 
 import com.gystry.kweather.data.net.api.PlaceService
 import com.gystry.kweather.data.net.api.WeatherService
+import com.gystry.kweather.util.log
 import retrofit2.Call
 import retrofit2.Callback
 import retrofit2.Response
@@ -40,6 +41,7 @@ class WeatherNetWork {
 
                 override fun onResponse(call: Call<T>, response: Response<T>) {
                     var body = response.body()
+                    log("3333333333-----${response.body().toString()}")
                     if (body != null) {
                         continuation.resume(body)
                     } else {
